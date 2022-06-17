@@ -174,12 +174,13 @@ def screen(request, screen_ip):
     username = request.session.get('username')
     if username == "admin":
         client_list, client_addr_list, client_username_list = server.data_list()
+        print("client_list:", client_list)
         client_ip_list = []
         for i in client_addr_list:
             client_ip_list.append(i[0])
-        print(client_ip_list)
+        print("clien_ip:", client_ip_list)
         Index = client_ip_list.index(screen_ip)
-        print(Index)
+        print("接受截图(index)：", Index)
         cmd_pool(f"screen {Index}")
         return redirect('/index')
     else:
@@ -188,4 +189,4 @@ def screen(request, screen_ip):
 
 def picture_index(request):
     picture_path = picture.objects.all()
-    return render(request, 'picture.html',{"picture_data":picture_path})
+    return render(request, 'picture.html', {"picture_data": picture_path})

