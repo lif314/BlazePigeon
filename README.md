@@ -44,14 +44,14 @@ set lport xxxx
 
 - Home
 
-![img.png](img.png)
+![img.png](docs/imgs/img.png)
 
 - Client Setting
 
-![img_1.png](img_1.png)
+![img_1.png](docs/imgs/img_1.png)
 
 - DDos Setting
 
-![img_2.png](img_2.png)
+![img_2.png](docs/imgs/img_2.png)
 
 - Screen Shoot

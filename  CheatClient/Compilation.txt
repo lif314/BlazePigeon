@@ -1,0 +1,5 @@
+(Program that produces jpg with malware)
+pyinstaller --onefile  --icon=InjectingMalwareIntoJPG.ico InjectingMalwareIntoJPG.py
+
+(Malware)
+pyinstaller --onefile  --noconsole  --icon=malware.ico  ParseJPGtoRun.py

