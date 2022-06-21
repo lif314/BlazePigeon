@@ -10,7 +10,13 @@ BlazePigeon(仿[灰鸽子](https://www.freebuf.com/sectool/273317.html))--远程
 - 使用这类木马，只需有人运行了服务端程序，如果客户知道了服务端的IP地址，就可以实现远程控制。
 - 这类程序可以实现观察受害者正在干什么。
 
-## 重要依赖包
+## 环境搭建
+- clone
+```shell
+git clone https://github.com/lif314/BlazePigeon.git
+```
+
+- install
 ```shell
 pip install mysql
 
@@ -20,7 +26,6 @@ pip install pywin32api
 
 pip install requests
 ```
-
 ## 使用说明
 有两种模式可以进行使用，web模式和命令行模式
 
